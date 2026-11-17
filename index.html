@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C++ Hello World — Practice Test</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0b1020;color:#e8edf8;font:16px system-ui,Arial,sans-serif}
+main{max-width:900px;margin:40px auto;padding:24px}.panel{background:#151d32;border:1px solid #2a3858;border-radius:16px;padding:24px;margin:18px 0}
+h1{margin:0 0 8px;font-size:2rem}.muted{color:#aab7d0}.tag{display:inline-block;background:#24385e;color:#cfe0ff;padding:5px 10px;border-radius:99px;font-size:.85rem}
+textarea{width:100%;min-height:270px;background:#080d18;color:#d9f5e5;border:1px solid #405477;border-radius:10px;padding:16px;font:14px/1.6 ui-monospace,monospace;resize:vertical}
+button{background:#77a7ff;color:#071226;border:0;border-radius:9px;padding:12px 18px;font-weight:700;cursor:pointer;margin:12px 8px 0 0}
+button.secondary{background:#2b3854;color:#e8edf8}.result{padding:14px;border-radius:10px;background:#0d1526;margin-top:14px;white-space:pre-wrap}
+code{color:#b9d5ff}li{margin:7px 0}
+</style>
+</head>
+<body>
+<main>
+  <span class="tag">C++ PRACTICE TEST · 10 MINUTES</span>
+  <h1>Hello World in C++</h1>
+  <p class="muted">A beginner-level coding practice exercise. This demo checks your source text; it does not compile or execute C++.</p>
+  <section class="panel">
+    <h2>Question 1 — Write a C++ program (10 marks)</h2>
+    <p>Write a complete C++ program that displays exactly:</p>
+    <div class="result">Hello World!</div>
+    <p><strong>Requirements</strong></p>
+    <ul>
+      <li>Include the <code>&lt;iostream&gt;</code> header.</li>
+      <li>Define the <code>main()</code> function.</li>
+      <li>Use <code>cout</code> to print <code>Hello World!</code>.</li>
+      <li>Return <code>0</code> from <code>main()</code>.</li>
+    </ul>
+  </section>
+  <section class="panel">
+    <h2>Your answer</h2>
+    <textarea id="answer" spellcheck="false">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello World!";
+    return 0;
+}</textarea>
+    <div>
+      <button onclick="submitAnswer()">Submit answer</button>
+      <button class="secondary" onclick="document.getElementById('answer').value=''">Clear</button>
+    </div>
+    <div id="result" class="result" aria-live="polite">Your result will appear here after submission.</div>
+  </section>
+  <p class="muted">Demo assessment only. No answers are sent to a server or stored. For a real secured exam, configure this page as the SEB start URL using the Safe Exam Browser Configuration Tool and test it on the target devices.</p>
+</main>
+<script>
+function submitAnswer(){
+ const s=document.getElementById('answer').value;
+ const checks=[
+  [/#include\s*<iostream>/.test(s),'Includes iostream'],
+  [/\bint\s+main\s*\(/.test(s),'Defines main()'],
+  [/\bcout\s*<<\s*["']Hello World!["']/.test(s),'Prints Hello World!'],
+  [/\breturn\s+0\s*;/.test(s),'Returns 0']
+ ];
+ const score=checks.filter(x=>x[0]).length;
+ document.getElementById('result').textContent=
+  `Score: ${score}/4 checks passed (${score*2.5}/10 marks)\n`+
+  checks.map(x=>(x[0]?'✓ ':'✗ ')+x[1]).join('\n')+
+  (score===4?'\n\nGreat work! All source-code checks passed.':'\n\nReview the missing requirements and try again.');
+}
+</script>
+</body>
+</html>
